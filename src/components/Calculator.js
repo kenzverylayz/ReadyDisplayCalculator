@@ -6,10 +6,10 @@ function Calculator() {
   const [width, setWidth] = useState('');
   const [quantity, setQuantity] = useState('');
   const [pricePerSqft, setPricePerSqft] = useState('');
-  const [units, setUnits] = useState("")
-  const gst = 9
+  const [units, setUnits] = useState('');
+  const [dropdownOpen, setDropdownOpen] = useState(false);  // New state to control dropdown visibility
+  const gst = 9;
 
-  
   const calculateSubtotal = () => {
     const heightValue = parseFloat(height) || 0;
     const widthValue = parseFloat(width) || 0;
@@ -26,11 +26,17 @@ function Calculator() {
     setWidth('');
     setQuantity('');
     setPricePerSqft('');
-  }
+  };
 
   const subtotal = calculateSubtotal();
   const gstAmount = (subtotal * parseFloat(gst)) / 100;
   const total = subtotal + gstAmount;
+
+  // Function to handle unit selection
+  const handleUnitSelection = (unit) => {
+    setUnits(unit);    // Set the selected unit
+    setDropdownOpen(false);  // Close the dropdown after selection
+  };
 
   return (
     <div className="flex flex-col justify-between w-full max-w-lg mx-auto text-black bg-white p-6 rounded-lg shadow-lg">
@@ -40,22 +46,26 @@ function Calculator() {
         {/* Dropdown for unit selection */}
         <div className="flex flex-col mb-4">
          Units:
-          <div className="dropdown dropdown-hover">
+          <div className="dropdown">
             <div
               tabIndex={0}
-              className="btn bg-white border-gray-300 text-black hover:bg-gray-300" 
+              onClick={() => setDropdownOpen(!dropdownOpen)} 
+              className="btn bg-white border-gray-300 text-black hover:bg-gray-300 cursor-pointer" 
             >
               {units ? units : 'Select Unit'}
             </div>
-            <ul
-              tabIndex={0}
-              className="dropdown-content menu bg-gray-200 rounded-box z-[1] w-52 p-2 shadow text-black"
-            >
-              <li><a onClick={() => setUnits('inch')}>Inches</a></li>
-              <li><a onClick={() => setUnits('feet')}>Feet</a></li>
-              <li><a onClick={() => setUnits('cm')}>Centimeters</a></li>
-              <li><a onClick={() => setUnits('meter')}>Meters</a></li>
-            </ul>
+            {dropdownOpen && (
+              <ul
+                tabIndex={0}
+                className="dropdown-content menu bg-gray-200 rounded-box z-[1] w-52 p-2 shadow text-black"
+              >  
+                <li><a onClick={() => handleUnitSelection('Mm')}>Mm</a></li>
+                <li><a onClick={() => handleUnitSelection('Cm')}>Centimeters</a></li>
+                <li><a onClick={() => handleUnitSelection('Meter')}>Meters</a></li>
+                <li><a onClick={() => handleUnitSelection('Inch')}>Inches</a></li>
+                <li><a onClick={() => handleUnitSelection('Feet')}>Feet</a></li>                
+              </ul>
+            )}
           </div>
         </div>
 

@@ -15,7 +15,7 @@ function Background() {
         <img src={readyDisplayBg} alt="Background" className="absolute inset-0 h-full w-full object-cover" />
 
         {/* Centered Calculator */}
-        <div className="absolute inset-0 flex items-center justify-center p-6">
+        <div className="absolute inset-0 flex items-center justify-center">
             <Calculator />
         </div>
       </div>
