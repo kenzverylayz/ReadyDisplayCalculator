@@ -43,7 +43,7 @@ function Calculator() {
           <div className="dropdown dropdown-hover">
             <div
               tabIndex={0}
-              className="btn bg-white border-gray-300 text-black hover:bg-gray-300" // Add hover:bg-gray-300 here
+              className="btn bg-white border-gray-300 text-black hover:bg-gray-300" 
             >
               {units ? units : 'Select Unit'}
             </div>
@@ -108,7 +108,7 @@ function Calculator() {
         </div>
 
         <div className="mt-4">
-          <button onClick={clearAll} className="btn bg-red-500 text-white">Clear all</button>
+          <button onClick={clearAll} className="btn bg-red-500 text-white hover:bg-red-400 outline-indigo-50;">Clear all</button>
         </div>
 
         <div className="mt-4">
