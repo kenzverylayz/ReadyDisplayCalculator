@@ -59,11 +59,11 @@ function Calculator() {
                 tabIndex={0}
                 className="dropdown-content menu bg-gray-200 rounded-box z-[1] w-52 p-2 shadow text-black"
               >  
-                <li><a onClick={() => handleUnitSelection('Mm')}>Mm</a></li>
-                <li><a onClick={() => handleUnitSelection('Cm')}>Centimeters</a></li>
-                <li><a onClick={() => handleUnitSelection('Meter')}>Meters</a></li>
-                <li><a onClick={() => handleUnitSelection('Inch')}>Inches</a></li>
-                <li><a onClick={() => handleUnitSelection('Feet')}>Feet</a></li>                
+                <li><a onClick={() => handleUnitSelection('mm')}>Milimeters</a></li>
+                <li><a onClick={() => handleUnitSelection('cm')}>Centimeters</a></li>
+                <li><a onClick={() => handleUnitSelection('m')}>Meters</a></li>
+                <li><a onClick={() => handleUnitSelection('in')}>Inches</a></li>
+                <li><a onClick={() => handleUnitSelection('ft')}>Feet</a></li>                
               </ul>
             )}
           </div>
